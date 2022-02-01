@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Register/Login</title>
+</head>
+<body class="bg-dark">
+    <main class="py-5">
+        <div class="my-forms">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-6">
+                        {% with errors = get_flashed_messages(category_filter=["errorRegister"]) %}
+                            {% if errors %}
+                            <div class="alert alert-danger text-center">
+                                {%- for msg in errors %}
+                                    <p>{{ msg }}</p>
+                                {% endfor -%}                       
+                            </div>
+                            {% endif %}
+                        {% endwith %}
+                        <div class="card border">
+                            <div class="card-header font-weight-bold">Register</div>
+                            <div class="card-body">
+                                <form  action="/register" method="POST">
+                                    <div class="form-group row">
+                                        <label for="Firstname" class="col-4 col-form-label text-md-right">First name:</label>
+                                        <div class="col-8">
+                                            <input type="text" id="Firstname" class="form-control" name="Firstname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="Lastname" class="col-4 col-form-label text-md-right">Last name:</label>
+                                        <div class="col-8">
+                                            <input type="text" id="Lastname" class="form-control" name="Lastname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="Email" class="col-4 col-form-label text-md-right">Email:</label>
+                                        <div class="col-8">
+                                            <input type="text" id="Email" class="form-control" name="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="Password" class="col-4 col-form-label text-md-right">Password:</label>
+                                        <div class="col-8">
+                                            <input type="password" id="Password" class="form-control" name="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="Cpassword" class="col-4 col-form-label text-md-right">Confirm Password:</label>
+                                        <div class="col-8">
+                                            <input type="password" id="Cpassword" class="form-control" name="Cpassword">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <div class="">
+                                            <button type="submit" class="btn btn-primary">Register</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        {% with errors = get_flashed_messages(category_filter=["errorLogin"]) %}
+                        {% if errors %}
+                        <div class="alert alert-danger text-center">
+                            {%- for msg in errors %}
+                                <p>{{ msg }}</p>
+                            {% endfor -%}                       
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                        <div class="card">
+                            <div class="card-header font-weight-bold">Login</div>
+                            <div class="card-body">
+                                <form action="/login" method="POST">
+                                    <div class="form-group row">
+                                        <label for="Email" class="col-4 col-form-label text-md-right">Email</label>
+                                        <div class="col-8">
+                                            <input type="text" id="Email" class="form-control" name="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="password" class="col-4 col-form-label text-md-right">Password</label>
+                                        <div class="col-8">
+                                            <input type="password" id="password" class="form-control" name="Password">
+                                        </div>
+                                    </div> 
+                                    <div class="d-flex justify-content-end ">
+                                        <div class="">
+                                            <button type="submit" class="btn btn-success">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
